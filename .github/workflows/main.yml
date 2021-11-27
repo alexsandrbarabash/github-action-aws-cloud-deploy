@@ -31,6 +31,7 @@ jobs:
             USER_NAME : ${{ secrets.USER_NAME  }}
             
         run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -i $PRIVATE_KEY ${USER_NAME}@${HOSTNAME}
           cd /home/ubuntu/CounterApp &&
           docker pull cfif2001/aws-cloud-action
