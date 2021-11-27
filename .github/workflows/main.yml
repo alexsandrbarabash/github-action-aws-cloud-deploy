@@ -32,7 +32,7 @@ jobs:
             
         run: |
           echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
-          ssh -tt -i private_key.pem ${USER_NAME}@${HOSTNAME}
+          ssh -o StrictHostKeyChecking=no -tt -i private_key.pem ${USER_NAME}@${HOSTNAME}
           cd /home/ubuntu/CounterApp &&
           docker pull cfif2001/aws-cloud-action
           docker run -d --rm --name cfif cfif2001/aws-cloud-action
