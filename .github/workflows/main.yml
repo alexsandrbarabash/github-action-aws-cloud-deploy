@@ -31,10 +31,8 @@ jobs:
             USER_NAME : ${{ secrets.USER_NAME  }}
             
         run: |
-          ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY ${USER_NAME}@${HOSTNAME} '
-          
-            #Now we have got the access of EC2 and we will start the deploy .
-            cd /home/ubuntu/CounterApp &&
-            docker pull cfif2001/aws-cloud-action
-            docker run -d --rm --name cfif cfif2001/aws-cloud-action
+          ssh -i $PRIVATE_KEY ${USER_NAME}@${HOSTNAME}
+          cd /home/ubuntu/CounterApp &&
+          docker pull cfif2001/aws-cloud-action
+          docker run -d --rm --name cfif cfif2001/aws-cloud-action
             
